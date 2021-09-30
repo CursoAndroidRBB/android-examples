@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TelaInicialActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Exemplos To-Do list"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btListViewSimples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="ListView Simples"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btRecyclerViewSimples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="RecyclerView Simples"
+        app:layout_constraintEnd_toEndOf="@+id/btListViewSimples"
+        app:layout_constraintStart_toStartOf="@+id/btListViewSimples"
+        app:layout_constraintTop_toBottomOf="@+id/btListViewSimples" />
+
+    <Button
+        android:id="@+id/btRecyclerViewCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="RecyclerView CheckBox"
+        app:layout_constraintEnd_toEndOf="@+id/btRecyclerViewSimples"
+        app:layout_constraintStart_toStartOf="@+id/btRecyclerViewSimples"
+        app:layout_constraintTop_toBottomOf="@+id/btRecyclerViewSimples" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
