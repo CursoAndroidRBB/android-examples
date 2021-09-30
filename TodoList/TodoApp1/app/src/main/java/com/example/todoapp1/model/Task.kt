@@ -1,4 +1,4 @@
-package com.example.todoapp1
+package com.example.todoapp1.model
 
 /**
  * Classe Task (Tarefa) armazena uma tarefa
