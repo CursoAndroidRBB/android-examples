@@ -2,6 +2,10 @@ Android Examples
 ---
 
 ## Conceitos abordados
+
+### Personalizar App (nome, título, etc.)
+- Detalhadamente nos projetos ActionBar, sem explicações no restante dos projetos
+
 ### Lista de itens dinâmica
 - ListView simples (sem Adapter)
   - Não usar mais listView para listas personalizadas, preferir recyclerView
@@ -14,23 +18,17 @@ Android Examples
 ### Comentários (Javadocs)
 - Uso de comentários detalhados para explicar o que cada coisa faz
 
-## Funcionalidades da To-Do List
-Abaixo listo as funcionalidades implementadas, uma "tag" indica qual app possui cada funcionalidade, onde "all" está em todos, "vN" está no app N, onde N pode ser 1, 2, 3...
+## Projetos Implementados
 
-- _(all)_ Mostrar lista de tarefas ao abrir
-- _(v1)_ Botão simples para adicionar nova tarefa
-- _(all)_ Botão FAB para adicionar nova tarefa
+### ActionBar: personalização do app
+- alterar título, botões no topo, etc.
 - ...
 
-## Versão 1: Exemplificar Layouts
-Nesta versão exemplifico o uso de layouts, iniciando com implementações simples e avançando para algo mais complexo, robusto
+### ToDo List: manipulação de listas
+- Uma série de projetos que aumentam gradativamente de complexidade
+- ...
 
-### V1.1: ListView simples
-Apenas exibe uma lista predefinida de tarefas, não é possível alterar
+### Agenda
 
-- **Objetivo:** demonstrar o uso de listView simples para mostrar itens de uma lista
-
-
-## Versão 2: SQLite
-
-## Versão 3: Firebase
+- Uma série de projetos para implementação de partes de uma Agenda
+- O objetivo é mostrar apenas algumas funcionalidades específicas, não um app completo
