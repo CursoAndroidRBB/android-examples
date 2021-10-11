@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_editar_contato.xml" value="0.35572916666666665" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35572916666666665" />
-        <entry key="app/src/main/res/layout/activity_tela_inicial.xml" value="0.2557291666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.340625" />
+        <entry key="app/src/main/res/layout/activity_tela_inicial.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/item_contato.xml" value="0.5" />
       </map>
     </option>
   </component>
