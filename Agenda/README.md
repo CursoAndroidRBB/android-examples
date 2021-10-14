@@ -19,3 +19,7 @@ Agenda Examples
 
 - Utiliza o exemplo mais simples de RecyclerView COM evento de clique
 - Clicar no item abre edição do contato
+
+## Versão 5: Fragments e BottomNavigation
+
+- Separa tela inicial em duas partes
