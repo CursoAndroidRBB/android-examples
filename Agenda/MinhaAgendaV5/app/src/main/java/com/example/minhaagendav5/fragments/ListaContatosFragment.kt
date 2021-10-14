@@ -1,4 +1,4 @@
-package com.example.minhaagendav5
+package com.example.minhaagendav5.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.minhaagendav5.Agenda
+import com.example.minhaagendav5.Contato
+import com.example.minhaagendav5.ContatosAdapter
+import com.example.minhaagendav5.EditarContatoActivity
 import com.example.minhaagendav5.databinding.FragmentListaContatosBinding
 
 class ListaContatosFragment: Fragment() {
