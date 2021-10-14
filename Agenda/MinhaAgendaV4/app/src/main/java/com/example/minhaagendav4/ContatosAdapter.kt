@@ -2,12 +2,13 @@ package com.example.minhaagendav4
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minhaagendav4.databinding.ItemContatoBinding
 
 class ContatosAdapter(
     val listaContatos: MutableList<Contato>,
-    val onItemClick: (Int) -> Unit
+    val onBtEditarClick: (Int) -> Unit
     ) : RecyclerView.Adapter<ContatosAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemContatoBinding): RecyclerView.ViewHolder(binding.root)
@@ -28,8 +29,13 @@ class ContatosAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.txtNome.text = listaContatos[position].nome
         holder.binding.txtTelefone.text = listaContatos[position].telefone
-        holder.binding.root.setOnClickListener {
-            onItemClick(position)
+        
+//        holder.binding.root.setOnClickListener {
+//            onItemClick(position)
+//        }
+        
+        holder.binding.btEditarContato.setOnClickListener {
+            onBtEditarClick(position)
         }
     }
 

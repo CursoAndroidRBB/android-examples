@@ -6,5 +6,5 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "MinhaAgendaV3"
+rootProject.name = "MinhaAgendaV4"
 include ':app'

@@ -19,10 +19,12 @@ class TelaInicialActivity : AppCompatActivity() {
 
         incializaLista()
 
-        adapter = ContatosAdapter(mutableListOf(), ::onItemClicked)
+        adapter = ContatosAdapter(mutableListOf(), ::onBtEditarClick)
+
         binding.rvContatos.layoutManager = LinearLayoutManager(this)
         binding.rvContatos.adapter = adapter
         binding.rvContatos.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+
         adapter.swapData(Agenda.listaContatos)
 
         setContentView(binding.root)
@@ -62,7 +64,7 @@ class TelaInicialActivity : AppCompatActivity() {
         )
     }
 
-    fun onItemClicked(indiceLista: Int) {
+    fun onBtEditarClick(indiceLista: Int) {
         val intent = Intent(this, EditarContatoActivity::class.java)
         intent.putExtra("indiceContato", indiceLista)
         startActivity(intent)

@@ -4,9 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.67" />
-        <entry key="app/src/main/res/layout/activity_editar_contato.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_editar_contato.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35572916666666665" />
-        <entry key="app/src/main/res/layout/activity_tela_inicial.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/activity_tela_inicial.xml" value="0.2972181551976574" />
         <entry key="app/src/main/res/layout/activity_teste.xml" value="0.2984375" />
       </map>
     </option>
