@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.minhaagendav6.Agenda
+import com.example.minhaagendav6.Contato
 import com.example.minhaagendav6.databinding.FragmentAjustesBinding
 
 class AjustesFragment: Fragment() {
@@ -19,6 +21,17 @@ class AjustesFragment: Fragment() {
     ): View {
         _binding = FragmentAjustesBinding.inflate(inflater, container, false)
 
+        val config = requireActivity().getSharedPreferences("configuracoes", 0)
+
+        binding.switch1.isChecked = config.getBoolean("listaContatosAlfabetico", false)
+
+        binding.switch1.setOnCheckedChangeListener { compoundButton, b ->
+            val editor = config.edit()
+            editor.putBoolean("listaContatosAlfabetico", compoundButton.isChecked)
+            editor.apply()
+        }
+
         return binding.root
     }
+
 }

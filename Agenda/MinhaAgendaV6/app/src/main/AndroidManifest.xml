@@ -14,7 +14,8 @@
             android:exported="true" />
         <activity
             android:name="com.example.minhaagendav6.TelaInicialActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.minhaagendav6.*
 import com.example.minhaagendav6.databinding.FragmentListaContatosBinding
 
-class ListaContatosFragment : Fragment() {
+class ListaContatosMelhoradaFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentListaContatosBinding? = null
 
     private val binding get() = _binding!!
@@ -49,7 +49,7 @@ class ListaContatosFragment : Fragment() {
     private fun carregaLista() {
         val config = requireActivity().getSharedPreferences("configuracoes", 0)
         val listaOrdemAlfabetica = config.getBoolean("listaContatosAlfabetico", false)
-        if(listaOrdemAlfabetica) {
+        if (listaOrdemAlfabetica) {
             val listaOrdenada = Agenda.listaContatos.sortedBy { it.nome }
             adapter.swapData(listaOrdenada)
         } else {
@@ -63,42 +63,26 @@ class ListaContatosFragment : Fragment() {
                 R.id.search_top_bar -> {
                     val searchView = menuItem?.actionView as SearchView
                     searchView.queryHint = "Digite para pesquisar"
-
-                    val listenerDigitacao = object : SearchView.OnQueryTextListener {
-                        override fun onQueryTextChange(newText: String?): Boolean =
-                            onQueryTextSubmit(newText) // vai buscar a cada letra digitada
-
-                        override fun onQueryTextSubmit(query: String?): Boolean {
-                            val queryLowerCase = query.toString().lowercase()
-
-                            val listaFiltrada = Agenda.listaContatos.filter { contatoAtual ->
-                                contatoAtual.nome.lowercase().contains(queryLowerCase) ||
-                                        contatoAtual.telefone.lowercase().contains(queryLowerCase)
-                            }
-
-                            // forma tradicional com loops para explicar o que está ocorrendo acima
-//                            val listaFiltrada = mutableListOf<Contato>()
-//                            Agenda.listaContatos.forEach {
-//                                val nomeLowerCase = it.nome.lowercase()
-//                                val telefoneLowerCase = it.telefone.lowercase()
-//
-//                                if (nomeLowerCase.contains(queryLowerCase) ||
-//                                    telefoneLowerCase.contains(queryLowerCase)) {
-//                                    listaFiltrada.add(it)
-//                                }
-//                            }
-                            adapter.swapData(listaFiltrada)
-                            return true
-                        }
-                    }
-
-                    searchView.setOnQueryTextListener(listenerDigitacao)
-
+                    searchView.setOnQueryTextListener(this)
                     true
                 }
                 else -> false
             }
         }
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean =
+        onQueryTextSubmit(newText) // vai buscar a cada letra digitada
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        val queryLowerCase = query.toString().lowercase()
+
+        val listaFiltrada = Agenda.listaContatos.filter { contatoAtual ->
+            contatoAtual.nome.lowercase().contains(queryLowerCase) ||
+                    contatoAtual.telefone.lowercase().contains(queryLowerCase)
+        }
+        adapter.swapData(listaFiltrada)
+        return true
     }
 
     override fun onResume() {
