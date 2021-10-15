@@ -23,3 +23,7 @@ Agenda Examples
 ## Versão 5: Fragments e BottomNavigation
 
 - Separa tela inicial em duas partes
+
+## Versão 6: Toolbar com Busca e SharedPreferences
+
+- Implementa barra no topo do aplicativo para permitir buscar contatos
