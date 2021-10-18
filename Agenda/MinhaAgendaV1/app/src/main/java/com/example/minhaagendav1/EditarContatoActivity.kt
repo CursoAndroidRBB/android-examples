@@ -2,6 +2,7 @@ package com.example.minhaagendav1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.minhaagendav1.databinding.ActivityEditarContatoBinding
 
 class EditarContatoActivity : AppCompatActivity() {
@@ -24,12 +25,8 @@ class EditarContatoActivity : AppCompatActivity() {
         binding.agendaBtSalvar.setOnClickListener {
             Agenda.listaContatos[indiceContato].nome = binding.agendaTxtNome.text.toString()
             Agenda.listaContatos[indiceContato].telefone = binding.agendaTxtTelefone.text.toString()
-
-            // --------------
-            // DESCOMENTAR
-//            Toast.makeText(this, "Contato Salvo com Sucesso!", Toast.LENGTH_SHORT).show()
-//            finish()
-            // --------------
+            Toast.makeText(this, "Contato Salvo com Sucesso!", Toast.LENGTH_SHORT).show()
+            finish()
         }
 
         setContentView(binding.root)

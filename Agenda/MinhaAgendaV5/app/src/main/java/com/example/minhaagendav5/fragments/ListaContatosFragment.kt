@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.minhaagendav5.Agenda
-import com.example.minhaagendav5.Contato
-import com.example.minhaagendav5.ContatosAdapter
-import com.example.minhaagendav5.EditarContatoActivity
+import com.example.minhaagendav5.*
 import com.example.minhaagendav5.databinding.FragmentListaContatosBinding
 
-class ListaContatosFragment: Fragment() {
+class ListaContatosFragment : Fragment() {
     private var _binding: FragmentListaContatosBinding? = null
 
     private val binding get() = _binding!!
@@ -32,56 +30,83 @@ class ListaContatosFragment: Fragment() {
 
         binding.rvContatos.layoutManager = LinearLayoutManager(context)
         binding.rvContatos.adapter = adapter
-        binding.rvContatos.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        binding.rvContatos.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                LinearLayoutManager.VERTICAL
+            )
+        )
 
-        inicializaLista()
-        adapter.swapData(Agenda.listaContatos)
+        carregaLista()
+
+        initTopBar()
 
         return binding.root
     }
 
+    private fun carregaLista() {
+        val config = requireActivity().getSharedPreferences("configuracoes", 0)
+        val listaOrdemAlfabetica = config.getBoolean("listaContatosAlfabetico", false)
+        if(listaOrdemAlfabetica) {
+            val listaOrdenada = Agenda.listaContatos.sortedBy { it.nome }
+            adapter.swapData(listaOrdenada)
+        } else {
+            adapter.swapData(Agenda.listaContatos)
+        }
+    }
+
+    private fun initTopBar() {
+        binding.toolbarContatos.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.search_top_bar -> {
+                    val searchView = menuItem?.actionView as SearchView
+                    searchView.queryHint = "Digite para pesquisar"
+
+                    val listenerDigitacao = object : SearchView.OnQueryTextListener {
+                        override fun onQueryTextChange(newText: String?): Boolean =
+                            onQueryTextSubmit(newText) // vai buscar a cada letra digitada
+
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            val queryLowerCase = query.toString().lowercase()
+
+                            val listaFiltrada = Agenda.listaContatos.filter { contatoAtual ->
+                                contatoAtual.nome.lowercase().contains(queryLowerCase) ||
+                                        contatoAtual.telefone.lowercase().contains(queryLowerCase)
+                            }
+
+                            // forma tradicional com loops para explicar o que está ocorrendo acima
+//                            val listaFiltrada = mutableListOf<Contato>()
+//                            Agenda.listaContatos.forEach {
+//                                val nomeLowerCase = it.nome.lowercase()
+//                                val telefoneLowerCase = it.telefone.lowercase()
+//
+//                                if (nomeLowerCase.contains(queryLowerCase) ||
+//                                    telefoneLowerCase.contains(queryLowerCase)) {
+//                                    listaFiltrada.add(it)
+//                                }
+//                            }
+                            adapter.swapData(listaFiltrada)
+                            return true
+                        }
+                    }
+
+                    searchView.setOnQueryTextListener(listenerDigitacao)
+
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
     override fun onResume() {
         super.onResume()
-        adapter.swapData(Agenda.listaContatos)
+        carregaLista()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun inicializaLista() {
-        Agenda.listaContatos.addAll(
-            listOf(
-                Contato("1 Rodrigo", "1111"),
-                Contato("2 João", "22222"),
-                Contato("3 Maria", "33333"),
-                Contato("4 Maria", "33333"),
-                Contato("5 Maria", "33333"),
-                Contato("6 Maria", "33333"),
-                Contato("7 Maria", "33333"),
-                Contato("8 Maria", "33333"),
-                Contato("9 Maria", "33333"),
-                Contato("10 Maria", "33333"),
-                Contato("11 Maria", "33333"),
-                Contato("12 Maria", "33333"),
-                Contato("13 Maria", "33333"),
-                Contato("14 Maria", "33333"),
-                Contato("15 Maria", "33333"),
-                Contato("16 Maria", "33333"),
-                Contato("17 Maria", "33333"),
-                Contato("19 Maria", "33333"),
-                Contato("20 Maria", "33333"),
-                Contato("21 Maria", "33333"),
-                Contato("22 Maria", "33333"),
-                Contato("23 Maria", "33333"),
-                Contato("24 Maria", "33333"),
-                Contato("25 Maria", "33333"),
-                Contato("26 Maria", "33333"),
-                Contato("27 Maria", "33333"),
-
-                )
-        )
     }
 
     fun onBtEditarClick(indiceLista: Int) {

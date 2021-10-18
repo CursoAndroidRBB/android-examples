@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinhaAgendaV3">
         <activity
-            android:name=".TelaInicialActivity"
+            android:name="com.example.minhaagendav3.EditarContatoActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.minhaagendav3.TelaInicialActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

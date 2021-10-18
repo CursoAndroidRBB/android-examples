@@ -8,15 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MinhaAgendaV2">
+        android:theme="@style/Theme.MinhaAgendaV3">
         <activity
-            android:name=".TesteActivity"
-            android:exported="true" />
-        <activity
-            android:name=".EditarContatoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".TelaInicialActivity"
+            android:name="com.example.minhaagendav2.TelaInicialActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
