@@ -1,77 +1,54 @@
 package com.example.minhaagendav4
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import com.example.minhaagendav4.databinding.ActivityTelaInicialBinding
+import com.example.minhaagendav4.fragments.AjustesFragment
+import com.example.minhaagendav4.fragments.ListaContatosFragment
 
 class TelaInicialActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTelaInicialBinding
-    private lateinit var adapter: ContatosAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityTelaInicialBinding.inflate(layoutInflater)
 
-        incializaLista()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentContainer, ListaContatosFragment())
+            .commit()
 
-        adapter = ContatosAdapter(mutableListOf(), ::onBtEditarClick)
-
-        binding.rvContatos.layoutManager = LinearLayoutManager(this)
-        binding.rvContatos.adapter = adapter
-        binding.rvContatos.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
-
-        adapter.swapData(Agenda.listaContatos)
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.ic_home -> {
+                    loadFragments(ListaContatosFragment(), FRAGMENT_HOME)
+                    true
+                }
+                R.id.ic_ajustes -> {
+                    loadFragments(AjustesFragment(), FRAGMENT_AJUSTES)
+                    true
+                }
+                else ->
+                    false
+            }
+        }
 
         setContentView(binding.root)
     }
 
-    private fun incializaLista() {
-        Agenda.listaContatos.addAll(
-            listOf(
-                Contato("1 Rodrigo", "1111"),
-                Contato("2 João", "22222"),
-                Contato("3 Maria", "33333"),
-                Contato("4 Maria", "33333"),
-                Contato("5 Maria", "33333"),
-                Contato("6 Maria", "33333"),
-                Contato("7 Maria", "33333"),
-                Contato("8 Maria", "33333"),
-                Contato("9 Maria", "33333"),
-                Contato("10 Maria", "33333"),
-                Contato("11 Maria", "33333"),
-                Contato("12 Maria", "33333"),
-                Contato("13 Maria", "33333"),
-                Contato("14 Maria", "33333"),
-                Contato("15 Maria", "33333"),
-                Contato("16 Maria", "33333"),
-                Contato("17 Maria", "33333"),
-                Contato("19 Maria", "33333"),
-                Contato("20 Maria", "33333"),
-                Contato("21 Maria", "33333"),
-                Contato("22 Maria", "33333"),
-                Contato("23 Maria", "33333"),
-                Contato("24 Maria", "33333"),
-                Contato("25 Maria", "33333"),
-                Contato("26 Maria", "33333"),
-                Contato("27 Maria", "33333"),
-
-            )
-        )
+    //Carrega os fragments e os empilha
+    private fun loadFragments(fragment: Fragment, tag: String){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainer, fragment, tag)
+            commit()
+        }
     }
 
-    fun onBtEditarClick(indiceLista: Int) {
-        val intent = Intent(this, EditarContatoActivity::class.java)
-        intent.putExtra("indiceContato", indiceLista)
-        startActivity(intent)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        adapter.swapData(Agenda.listaContatos)
+    companion object {
+        private const val FRAGMENT_HOME = "FRAGMENT_HOME"
+        private const val FRAGMENT_AJUSTES = "FRAGMENT_AJUSTES"
     }
 }

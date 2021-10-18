@@ -1,36 +1,56 @@
-package com.example.minhaagendav3
+package com.example.minhaagendav4.fragments
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.minhaagendav3.databinding.ActivityTelaInicialBinding
+import com.example.minhaagendav4.Agenda
+import com.example.minhaagendav4.Contato
+import com.example.minhaagendav4.ContatosAdapter
+import com.example.minhaagendav4.EditarContatoActivity
+import com.example.minhaagendav4.databinding.FragmentListaContatosBinding
 
-class TelaInicialActivity : AppCompatActivity() {
+class ListaContatosFragment: Fragment() {
+    private var _binding: FragmentListaContatosBinding? = null
 
-    private lateinit var binding: ActivityTelaInicialBinding
+    private val binding get() = _binding!!
+
     private lateinit var adapter: ContatosAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityTelaInicialBinding.inflate(layoutInflater)
-
-        incializaLista()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentListaContatosBinding.inflate(inflater, container, false)
 
         adapter = ContatosAdapter(mutableListOf(), ::onBtEditarClick)
 
-        binding.rvContatos.layoutManager = LinearLayoutManager(this)
+        binding.rvContatos.layoutManager = LinearLayoutManager(context)
         binding.rvContatos.adapter = adapter
-        binding.rvContatos.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+        binding.rvContatos.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
+        inicializaLista()
         adapter.swapData(Agenda.listaContatos)
 
-        setContentView(binding.root)
+        return binding.root
     }
 
-    private fun incializaLista() {
+    override fun onResume() {
+        super.onResume()
+        adapter.swapData(Agenda.listaContatos)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun inicializaLista() {
         Agenda.listaContatos.addAll(
             listOf(
                 Contato("1 Rodrigo", "1111"),
@@ -60,18 +80,14 @@ class TelaInicialActivity : AppCompatActivity() {
                 Contato("26 Maria", "33333"),
                 Contato("27 Maria", "33333"),
 
-            )
+                )
         )
     }
 
     fun onBtEditarClick(indiceLista: Int) {
-        val intent = Intent(this, EditarContatoActivity::class.java)
+        val intent = Intent(context, EditarContatoActivity::class.java)
         intent.putExtra("indiceContato", indiceLista)
         startActivity(intent)
     }
 
-    override fun onResume() {
-        super.onResume()
-        adapter.swapData(Agenda.listaContatos)
-    }
 }

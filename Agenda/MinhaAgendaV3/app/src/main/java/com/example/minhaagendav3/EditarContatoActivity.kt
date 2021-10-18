@@ -1,9 +1,9 @@
-package com.example.minhaagendav2
+package com.example.minhaagendav3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.minhaagendav2.databinding.ActivityEditarContatoBinding
+import com.example.minhaagendav3.databinding.ActivityEditarContatoBinding
 
 class EditarContatoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditarContatoBinding
