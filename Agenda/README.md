@@ -1,29 +1,26 @@
 Agenda Examples
 ---
 
-## Versão 1: Praticar uso de Objeto Global
+## Versão 1: ListView e EditarContato em segunda tela
 
-- Salvamento de contatos em um "object" global
+- Salvar contatos em objeto global
+- Mudanças são perdidas após fechar app
+- ListView simples para mostrar contatos
+- Clicar na lista => tela para editar
 
-## Versão 2: ListView e EditarContato em segunda tela
-
-- Utiliza uma ListView simples para mostrar contatos
-- Clicar na lista de contatos abre nova tela para editar
-- Salvamento de contato na segunda tela afeta objeto global]
-
-## Versão 3: RecyclerView sem clique
+## Versão 2: RecyclerView sem clique
 
 - Utiliza a forma mais simples de usar um RecyclerView para exibir uma lista
 
-## Versão 4: RecyclerView com clique
+## Versão 3: RecyclerView com clique
 
 - Utiliza o exemplo mais simples de RecyclerView COM evento de clique
 - Clicar no item abre edição do contato
 
-## Versão 5: Fragments e BottomNavigation
+## Versão 4: Fragments e BottomNavigation
 
 - Separa tela inicial em duas partes
 
-## Versão 6: Toolbar com Busca e SharedPreferences
+## Versão 5: Toolbar com Busca e SharedPreferences
 
 - Implementa barra no topo do aplicativo para permitir buscar contatos
