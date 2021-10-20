@@ -1,6 +1,6 @@
 package com.example.minhaagendav5
 
-data class Contato(var nome: String, var telefone: String) {
+data class Contato(var nome: String, var telefone: String, var favorito: Boolean = false) {
     val id = getProximoId()
 
     override fun toString(): String {

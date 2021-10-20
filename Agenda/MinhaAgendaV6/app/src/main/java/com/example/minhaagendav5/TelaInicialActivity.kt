@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import com.example.minhaagendav5.databinding.ActivityTelaInicialBinding
 import com.example.minhaagendav5.fragments.AjustesFragment
 import com.example.minhaagendav5.fragments.ListaContatosFragment
-import com.example.minhaagendav5.fragments.ListaContatosMelhoradaFragment
 
 class TelaInicialActivity : AppCompatActivity() {
 
@@ -27,7 +26,7 @@ class TelaInicialActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.ic_home -> {
-                    loadFragments(ListaContatosMelhoradaFragment(), FRAGMENT_HOME)
+                    loadFragments(ListaContatosFragment(), FRAGMENT_HOME)
                     true
                 }
                 R.id.ic_ajustes -> {

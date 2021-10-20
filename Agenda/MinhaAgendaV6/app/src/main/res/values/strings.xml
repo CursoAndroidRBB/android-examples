@@ -12,4 +12,10 @@
     <string name="contato_removido">Contato removido!</string>
     <string name="contato_salvo">Contato Salvo com Sucesso!</string>
     <string name="editar_contato">Editar Contato</string>
+    <string name="favorito">Favorito</string>
+    <string name="ordenacao">Ordenação</string>
+    <string name="alfabetica_az">Alfabética A a Z</string>
+    <string name="alfabetica_za">Alfabética Z a A</string>
+    <string name="ordem_insercao">Ordem de Inserção</string>
+
 </resources>
