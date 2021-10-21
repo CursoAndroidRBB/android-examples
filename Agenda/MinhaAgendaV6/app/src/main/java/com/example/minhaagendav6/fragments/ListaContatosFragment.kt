@@ -1,4 +1,4 @@
-package com.example.minhaagendav5.fragments
+package com.example.minhaagendav6.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,11 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.minhaagendav5.*
-import com.example.minhaagendav5.databinding.FragmentListaContatosBinding
-import com.example.minhaagendav5.enums.TipoOrdenacao
-import com.example.minhaagendav5.utils.IntentsConstants
-import com.example.minhaagendav5.utils.PrefsConstants
+import com.example.minhaagendav6.*
+import com.example.minhaagendav6.databinding.FragmentListaContatosBinding
+import com.example.minhaagendav6.enums.TipoOrdenacao
+import com.example.minhaagendav6.utils.IntentsConstants
+import com.example.minhaagendav6.utils.PrefsConstants
 
 /**
  * Classe ListaContatosFragment para listar todos os contatos da agenda

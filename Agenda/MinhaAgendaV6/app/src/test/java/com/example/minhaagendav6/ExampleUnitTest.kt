@@ -1,4 +1,4 @@
-package com.example.minhaagendav5
+package com.example.minhaagendav6
 
 import org.junit.Test
 

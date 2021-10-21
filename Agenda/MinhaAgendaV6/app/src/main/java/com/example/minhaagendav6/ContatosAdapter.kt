@@ -1,9 +1,9 @@
-package com.example.minhaagendav5
+package com.example.minhaagendav6
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.minhaagendav5.databinding.ItemContatoBinding
+import com.example.minhaagendav6.databinding.ItemContatoBinding
 
 /**
  * Classe ContatosAdapter para exibir cada contato usando um RecyclerView

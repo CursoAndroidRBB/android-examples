@@ -1,4 +1,4 @@
-package com.example.minhaagendav5.utils
+package com.example.minhaagendav6.utils
 
 /**
  * Object IntentsConstants para definir as strings na passagem de parâmetros entre telas quando

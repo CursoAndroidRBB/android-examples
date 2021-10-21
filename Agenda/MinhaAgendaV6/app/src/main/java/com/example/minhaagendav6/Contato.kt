@@ -1,4 +1,4 @@
-package com.example.minhaagendav5
+package com.example.minhaagendav6
 
 /**
  * Classe Contato para armazenar informações de contatos, é a parte do conjunto "lista de contatos"

@@ -1,15 +1,13 @@
-package com.example.minhaagendav5.fragments
+package com.example.minhaagendav6.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.minhaagendav5.databinding.FragmentAjustesBinding
-import com.example.minhaagendav5.enums.TipoOrdenacao
-import com.example.minhaagendav5.utils.PrefsConstants
+import com.example.minhaagendav6.databinding.FragmentAjustesBinding
+import com.example.minhaagendav6.enums.TipoOrdenacao
+import com.example.minhaagendav6.utils.PrefsConstants
 
 /**
  * Classe AjustesFragment para ajustar as configurações do app

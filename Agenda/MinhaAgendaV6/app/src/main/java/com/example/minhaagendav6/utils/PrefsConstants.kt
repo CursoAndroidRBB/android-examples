@@ -1,4 +1,4 @@
-package com.example.minhaagendav5.utils
+package com.example.minhaagendav6.utils
 
 /**
  * Object PrefsConstants para definir as constantes de SharedPreferences. Todas as constantes de

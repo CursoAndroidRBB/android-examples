@@ -1,4 +1,4 @@
-package com.example.minhaagendav5
+package com.example.minhaagendav6
 
 /**
  * Object Agenda para salvar a lista de contatos globalmente

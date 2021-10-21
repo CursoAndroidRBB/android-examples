@@ -1,4 +1,4 @@
-package com.example.minhaagendav5.enums
+package com.example.minhaagendav6.enums
 
 /**
  * Enum TipoOrdenacao permite escolher o tipo de ordenacao da lista de contatos

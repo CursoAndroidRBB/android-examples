@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.minhaagendav5">
+    package="com.example.minhaagendav6">
 
     <application
         android:allowBackup="true"
@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinhaAgendaV5">
         <activity
-            android:name="com.example.minhaagendav5.EditarContatoActivity"
+            android:name="com.example.minhaagendav6.EditarContatoActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.minhaagendav5.TelaInicialActivity"
+            android:name="com.example.minhaagendav6.TelaInicialActivity"
             android:exported="true"
             android:theme="@style/NoActionBar">
             <intent-filter>
