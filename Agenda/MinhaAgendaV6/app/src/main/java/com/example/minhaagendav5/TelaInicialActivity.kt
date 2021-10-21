@@ -7,6 +7,14 @@ import com.example.minhaagendav5.databinding.ActivityTelaInicialBinding
 import com.example.minhaagendav5.fragments.AjustesFragment
 import com.example.minhaagendav5.fragments.ListaContatosFragment
 
+/**
+ * Classe TelaInicialActivity para conter todos os fragments principais: lista de contatos e ajustes
+ *
+ * Bottom Navigation permite escolher qual tela ver
+ *
+ * @author Rodrigo Barros Bernardino
+ * <a href="mailto:rberna.contato@gmail.com">rberna.contato@gmail.com</a>
+ */
 class TelaInicialActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTelaInicialBinding
