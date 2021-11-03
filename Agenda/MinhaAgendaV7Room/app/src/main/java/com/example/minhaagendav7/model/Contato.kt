@@ -1,5 +1,10 @@
 package com.example.minhaagendav7.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.example.minhaagendav7.repository.sqlite.*
+
 /**
  * Classe Contato para armazenar informações de contatos, é a parte do conjunto "lista de contatos"
  *
@@ -11,18 +16,11 @@ package com.example.minhaagendav7.model
  * @author Rodrigo Barros Bernardino
  * <a href="mailto:rberna.contato@gmail.com">rberna.contato@gmail.com</a>
  */
-data class Contato(var nome: String, var telefone: String, var favorito: Boolean = false) {
-    val id = getProximoId()
-
-    override fun toString(): String {
-        return super.toString()
-    }
-
-    companion object {
-        var lastId = -1
-
-        fun getProximoId(): Int {
-            return lastId++
-        }
-    }
-}
+@Entity(tableName = TABLE_CONTATO)
+data class Contato (
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = COLUMN_ID) var id: Long = 0,
+    @ColumnInfo(name = COLUMN_NOME) var nome: String = "",
+    @ColumnInfo(name = COLUMN_TELEFONE) var telefone: String = "",
+    @ColumnInfo(name = COLUMN_FAVORITO) var favorito: Boolean = false
+)
