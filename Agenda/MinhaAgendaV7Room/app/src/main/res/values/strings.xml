@@ -17,5 +17,6 @@
     <string name="alfabetica_az">Alfabética A a Z</string>
     <string name="alfabetica_za">Alfabética Z a A</string>
     <string name="ordem_insercao">Ordem de Inserção</string>
+    <string name="adicionar_contatos_padrao">Adicionar Contatos Padrão</string>
 
 </resources>

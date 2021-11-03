@@ -1,13 +1,11 @@
 package com.example.minhaagendav7.repository.room.dao
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.minhaagendav7.model.Contato
 import com.example.minhaagendav7.repository.sqlite.COLUMN_ID
 import com.example.minhaagendav7.repository.sqlite.TABLE_CONTATO
 
+@Dao
 interface ContatoDao {
     @Insert
     fun insert(obj: Contato): Long

@@ -48,4 +48,5 @@ dependencies {
 
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
 }

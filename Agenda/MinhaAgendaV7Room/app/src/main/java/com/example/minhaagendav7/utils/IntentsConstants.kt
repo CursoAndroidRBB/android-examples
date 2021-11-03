@@ -13,5 +13,5 @@ package com.example.minhaagendav7.utils
  * <a href="mailto:rberna.contato@gmail.com">rberna.contato@gmail.com</a>
  */
 object IntentsConstants {
-    const val INT_INDICE_CONTATO = "indiceContato"
+    const val INT_ID_CONTATO = "indiceContato"
 }

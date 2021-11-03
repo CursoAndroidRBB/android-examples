@@ -13,9 +13,13 @@ import com.example.minhaagendav7.*
 import com.example.minhaagendav7.adapters.ContatosAdapter
 import com.example.minhaagendav7.databinding.FragmentListaContatosBinding
 import com.example.minhaagendav7.enums.TipoOrdenacao
+import com.example.minhaagendav7.model.Contato
+import com.example.minhaagendav7.repository.room.AppDatabase
 import com.example.minhaagendav7.ui.EditarContatoActivity
 import com.example.minhaagendav7.utils.IntentsConstants
 import com.example.minhaagendav7.utils.PrefsConstants
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 /**
  * Classe ListaContatosFragment para listar todos os contatos da agenda
@@ -31,6 +35,8 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
     private val binding get() = _binding!!
 
     private lateinit var adapter: ContatosAdapter
+
+    private lateinit var db: AppDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,14 +56,21 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
             )
         )
 
-        carregaLista()
+        doAsync {
+            db = AppDatabase.getDatabase(requireActivity().applicationContext)
+            val contatoList = db.contatoDao().getAllContatos()
+
+            uiThread {
+                carregaLista(contatoList)
+            }
+        }
 
         initTopBar()
 
         return binding.root
     }
 
-    private fun carregaLista() {
+    private fun carregaLista(contatoList: List<Contato>) {
         val config = requireActivity().getSharedPreferences(PrefsConstants.FILE_CONFIGURACOES, 0)
         val ordenacaoSelecionada_str = config.getString(
             PrefsConstants.KEY_TIPO_ORDENACAO_CONTATOS,
@@ -66,15 +79,15 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
         val ordenacaoSelecionada: TipoOrdenacao = TipoOrdenacao.valueOf(ordenacaoSelecionada_str!!)
         when (ordenacaoSelecionada) {
             TipoOrdenacao.ALFABETICA_AZ -> {
-                val listaOrdenada = Agenda.listaContatos.sortedBy { it.nome }
+                val listaOrdenada = contatoList.sortedBy { it.nome }
                 adapter.swapData(listaOrdenada)
             }
             TipoOrdenacao.ALFABETICA_ZA -> {
-                val listaOrdenada = Agenda.listaContatos.sortedByDescending { it.nome }
+                val listaOrdenada = contatoList.sortedByDescending { it.nome }
                 adapter.swapData(listaOrdenada)
             }
             TipoOrdenacao.ORDEM_INSERCAO -> {
-                adapter.swapData(Agenda.listaContatos)
+                adapter.swapData(contatoList)
             }
         }
     }
@@ -99,17 +112,31 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onQueryTextSubmit(query: String?): Boolean {
         val queryLowerCase = query.toString().lowercase()
 
-        val listaFiltrada = Agenda.listaContatos.filter { contatoAtual ->
-            contatoAtual.nome.lowercase().contains(queryLowerCase) ||
-                    contatoAtual.telefone.lowercase().contains(queryLowerCase)
+        doAsync {
+            val db = AppDatabase.getDatabase(requireActivity().applicationContext)
+            val contatoList = db.contatoDao().getAllContatos()
+
+            uiThread {
+                val listaFiltrada = contatoList.filter { contatoAtual ->
+                    contatoAtual.nome.lowercase().contains(queryLowerCase) ||
+                            contatoAtual.telefone.lowercase().contains(queryLowerCase)
+                }
+                adapter.swapData(listaFiltrada)
+            }
         }
-        adapter.swapData(listaFiltrada)
+
         return true
     }
 
     override fun onResume() {
         super.onResume()
-        carregaLista()
+        doAsync {
+            val contatoList = db.contatoDao().getAllContatos()
+
+            uiThread {
+                carregaLista(contatoList)
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -119,7 +146,8 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
 
     fun onBtEditarClick(indiceLista: Int) {
         val intent = Intent(context, EditarContatoActivity::class.java)
-        intent.putExtra(IntentsConstants.INT_INDICE_CONTATO, indiceLista)
+        val idContato = adapter.listaContatos[indiceLista].id
+        intent.putExtra(IntentsConstants.INT_ID_CONTATO, idContato)
         startActivity(intent)
     }
 
