@@ -1,4 +1,4 @@
-package com.example.minhaagendav7.fragments
+package com.example.minhaagendav7.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

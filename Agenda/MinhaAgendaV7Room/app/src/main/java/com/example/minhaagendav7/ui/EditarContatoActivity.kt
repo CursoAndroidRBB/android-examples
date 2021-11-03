@@ -1,8 +1,9 @@
-package com.example.minhaagendav7
+package com.example.minhaagendav7.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.minhaagendav7.R
 import com.example.minhaagendav7.databinding.ActivityEditarContatoBinding
 import com.example.minhaagendav7.utils.IntentsConstants
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

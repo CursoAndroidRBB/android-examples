@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinhaAgendaV5">
         <activity
-            android:name="com.example.minhaagendav7.EditarContatoActivity"
+            android:name="com.example.minhaagendav7.ui.EditarContatoActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.minhaagendav7.TelaInicialActivity"
+            android:name="com.example.minhaagendav7.ui.TelaInicialActivity"
             android:exported="true"
             android:theme="@style/NoActionBar">
             <intent-filter>

@@ -1,11 +1,13 @@
-package com.example.minhaagendav7
+package com.example.minhaagendav7.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.minhaagendav7.model.Contato
+import com.example.minhaagendav7.R
 import com.example.minhaagendav7.databinding.ActivityTelaInicialBinding
-import com.example.minhaagendav7.fragments.AjustesFragment
-import com.example.minhaagendav7.fragments.ListaContatosFragment
+import com.example.minhaagendav7.ui.fragments.AjustesFragment
+import com.example.minhaagendav7.ui.fragments.ListaContatosFragment
 
 /**
  * Classe TelaInicialActivity para conter todos os fragments principais: lista de contatos e ajustes

@@ -1,8 +1,9 @@
-package com.example.minhaagendav7
+package com.example.minhaagendav7.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.minhaagendav7.model.Contato
 import com.example.minhaagendav7.databinding.ItemContatoBinding
 
 /**
