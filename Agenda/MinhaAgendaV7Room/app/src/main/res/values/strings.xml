@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MinhaAgendaV7Room</string>
+    <string name="nome">Nome</string>
+    <string name="tefone">Tefone</string>
+    <string name="salvar">Salvar</string>
+    <string name="deletar">Deletar</string>
+    <string name="ordem_alfabetica">Ordem Alfabética</string>
+    <string name="editar">Editar</string>
+    <string name="deletar_contato">Deletar Contato</string>
+    <string name="realmente_deletar">Você realmente deseja deletar este contato?</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="contato_removido">Contato removido!</string>
+    <string name="contato_salvo">Contato Salvo com Sucesso!</string>
+    <string name="editar_contato">Editar Contato</string>
+    <string name="favorito">Favorito</string>
+    <string name="ordenacao">Ordenação</string>
+    <string name="alfabetica_az">Alfabética A a Z</string>
+    <string name="alfabetica_za">Alfabética Z a A</string>
+    <string name="ordem_insercao">Ordem de Inserção</string>
+    <string name="adicionar_contatos_padrao">Adicionar Contatos Padrão</string>
+
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.EditarContatoActivity">
+
+    <EditText
+        android:id="@+id/agenda_txtNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="@string/nome"
+        android:inputType="textPersonName"
+        android:nextFocusDown="@id/agenda_txtTelefone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchContatoFavorito" />
+
+    <Button
+        android:id="@+id/agenda_btSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#058F06"
+        android:text="@string/salvar"
+        app:layout_constraintEnd_toStartOf="@+id/btDeletar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agenda_txtTelefone" />
+
+    <EditText
+        android:id="@+id/agenda_txtTelefone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/tefone"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/agenda_txtNome"
+        app:layout_constraintStart_toStartOf="@+id/agenda_txtNome"
+        app:layout_constraintTop_toBottomOf="@+id/agenda_txtNome" />
+
+    <Button
+        android:id="@+id/btDeletar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF5722"
+        android:text="@string/deletar"
+        app:layout_constraintBottom_toBottomOf="@+id/agenda_btSalvar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/agenda_btSalvar"
+        app:layout_constraintTop_toTopOf="@+id/agenda_btSalvar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchContatoFavorito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/favorito"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
