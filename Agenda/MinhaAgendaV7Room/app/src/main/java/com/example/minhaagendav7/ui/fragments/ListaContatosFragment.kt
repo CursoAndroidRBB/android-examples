@@ -18,6 +18,7 @@ import com.example.minhaagendav7.repository.room.AppDatabase
 import com.example.minhaagendav7.ui.EditarContatoActivity
 import com.example.minhaagendav7.utils.IntentsConstants
 import com.example.minhaagendav7.utils.PrefsConstants
+import com.example.minhaagendav7.viewmodel.ListaContatosViewModel
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -36,7 +37,7 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var adapter: ContatosAdapter
 
-    private lateinit var db: AppDatabase
+    private lateinit var viewModel: ListaContatosViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,8 +58,8 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
         )
 
         doAsync {
-            db = AppDatabase.getDatabase(requireActivity().applicationContext)
-            val contatoList = db.contatoDao().getAllContatos()
+            viewModel = ListaContatosViewModel(AppDatabase.getDatabase(requireContext()))
+            val contatoList = viewModel.getAllContatos()
 
             uiThread {
                 carregaLista(contatoList)
@@ -113,8 +114,7 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
         val queryLowerCase = query.toString().lowercase()
 
         doAsync {
-            val db = AppDatabase.getDatabase(requireActivity().applicationContext)
-            val contatoList = db.contatoDao().getAllContatos()
+            val contatoList = viewModel.getAllContatos()
 
             uiThread {
                 val listaFiltrada = contatoList.filter { contatoAtual ->
@@ -131,7 +131,7 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onResume() {
         super.onResume()
         doAsync {
-            val contatoList = db.contatoDao().getAllContatos()
+            val contatoList = viewModel.getAllContatos()
 
             uiThread {
                 carregaLista(contatoList)
