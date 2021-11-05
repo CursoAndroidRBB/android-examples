@@ -1,6 +1,6 @@
 package com.example.minhaagendav7.repository.sqlite
 
-const val DATABASE_VERSION = 2
+const val DATABASE_VERSION = 1
 const val DATABASE_NAME = "dbApp"
 const val COLUMN_ID = "id"
 const val TABLE_CONTATO = "contato"

@@ -147,7 +147,7 @@ class ListaContatosFragment : Fragment(), SearchView.OnQueryTextListener {
     fun onBtEditarClick(indiceLista: Int) {
         val intent = Intent(context, EditarContatoActivity::class.java)
         val idContato = adapter.listaContatos[indiceLista].id
-        intent.putExtra(IntentsConstants.INT_ID_CONTATO, idContato)
+        intent.putExtra(IntentsConstants.LONG_ID_CONTATO, idContato)
         startActivity(intent)
     }
 
